@@ -41,13 +41,15 @@
     
     <main>
 	    <section>
-            <h2><%= data.connectionName %></h2></div>
-            <img src="../assets/images/pic3.jpeg" alt="logo" height= "150" width="150"> 
+            <h2 class="center-text"><%= data.connectionName %></h2>
+            <p class="center-text"><img src="../assets/images/pic3.jpeg" alt="logo" height= "150" width="150"> </p>
             <br>
-           Hosted by: <%= data.hostedBy %><br><%= data.date%><br>
-                <%= data.time%><br><%= data.location%></div>
+          <h4 id="hosted-by" class="event-details">Hosted by: <%= data.hostedBy %></h4>
+          <p class="event-details"><%= data.date%><br>
+        <%= data.time%><br><%= data.location%></p>
+         
             
-                <p>
+                <p class="event-details">
                     <strong>Travel Event Details</strong><br>
                     <%= data.connectionDetails %>
                  </p>
