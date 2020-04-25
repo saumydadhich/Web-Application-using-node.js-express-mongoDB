@@ -37,7 +37,7 @@
 
 			<td >
 				      <form action="/connections/update" method="post">
-          <% if(session.userId !== data[i].connection.userId) { %>
+          <% if(session.userId !== data[i].connection.userId || session.userId === 0) { %>
                     <input type="hidden" name="connectionId" value="<%= data[i].connection.connectionId %>" />
                     <% if(session.userId !== 0){ %>
                         <a  class="buttonUpdate" style ="color:rgb(0, 255, 221); cursor: pointer;" href="/connections/connection?id=<%= data[i].connection.connectionId %>">Update</a>

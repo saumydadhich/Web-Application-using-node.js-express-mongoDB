@@ -66,7 +66,10 @@ route.post('/', urlEncodedParser, check('userEmaildAddress').isEmail(), async fu
     //  loggedInUser = await userdb.getUser(req.body.userEmaildAddress, UserModel);
       req.session.theUser = await userdb.getUser(req.body.userEmaildAddress, UserModel);
       req.session.userProfile = await userConnectionDB.getUserProfile(req.session.theUser.userId, UserConnectionModel, ConnectionModel);
-      res.render('savedConnections', { data: req.session.userProfile,session:req.session.theUser });
+      if(req.session.theUser.userId === 0)
+        res.redirect('/connections');
+      else
+        res.render('savedConnections', { data: req.session.userProfile,session:req.session.theUser });
     }
     else {
       res.render('login', {session: req.session.theUser, failure: "incorrect", errorMessage: ""});
