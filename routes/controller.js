@@ -24,7 +24,7 @@ route.get('/login', function (req, res) {
 })
 
 route.get('/signup', function (req, res){
-        res.render('signup.ejs', { session: req.session.theUser });
+        res.render('signup.ejs', { session: req.session.theUser, failure: false, errorMessage: "" });
 })
 
 route.get('/*', function (req, res) {

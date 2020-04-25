@@ -59,17 +59,50 @@ var getUsers = function(userCollection) {
             if(docs === null)
               var bool = false;
             else{
-              bool = passwordUtility.verifyPassword(password, docs.password.salt, docs.password.hash);
+              bool = passwordUtility.verifyPassword(password, docs.password.salt, docs.password.passwordHash);
             }
             resolve(bool)
           }).catch(err => {return reject(err);})
         })
     };
 
+    var isEmailPresent = function(username, UserModel) {
+      return new Promise((resolve, reject) => {
+        UserModel.findOne({userEmail: username}).then(docs => {
+          //console.log(username);
+          if (docs === null) {
+            var bool = false
+          }
+          else {
+            var bool = true
+          }
+          resolve(bool)
+        }).catch(err => {return reject(err);})
+      })
+    }
+
+    var addUser = async function(userModel, email, password, firstname, lastname, address1, address2, city, state, zipcode, country){
+        var account = new userObj(await getNewUserID(userModel), firstname, lastname, email, passwordUtility.generatePasswordHashAndSalt(password), address1, address2, city, state, zipcode, country);
+        var document = new userModel(account);
+        console.log(passwordUtility.generatePasswordHashAndSalt(password));
+        document.save();
+    };
+
+    var getNewUserID = function(userModel){
+        return new Promise((resolve, reject) => {
+            userModel.find().count().then(docs =>{
+              var size = 1001 + docs
+              resolve(size);
+            }).catch(err => {return reject(err);})
+        })
+    }
+
 
 module.exports = {
     // userData: userData,
     getUsers: getUsers,
     getUser: getUser,
-    validateLoginDetails: validateLoginDetails
+    validateLoginDetails: validateLoginDetails,
+    addUser: addUser,
+    isEmailPresent: isEmailPresent
 };

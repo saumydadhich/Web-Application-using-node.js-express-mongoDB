@@ -77,7 +77,7 @@ route.post('/', urlEncodedParser, check('userEmaildAddress').isEmail(), async fu
 
 route.post('/create', urlEncodedParser,
 check('username').isEmail().custom(async value => {
-  if(await userDB.isEmailPresent(value)){
+  if(await userdb.isEmailPresent(value, UserModel)){
     return Promise.reject();
   }
 }).withMessage('Email invalid/already in use'),
@@ -127,17 +127,23 @@ check('country').custom(value => {
   }
 }).withMessage('Country should contain only characters and spaces'),
 check('zipcode').isNumeric().withMessage('Zipcode can only contain numbers') , async function(req, res) {
-
-})
+    const errors = validationResult(req);
+    if(!errors.isEmpty()) {
+      console.log(errors.array());
+      res.render('signup', {session: req.session.theUser, failure: true, errorMessage: errors.array()})
+    }
+    else {
+      userdb.addUser(UserModel, req.body.username, req.body.password, req.body.firstName, req.body.lastName, req.body.address1, req.body.address2, req.body.city, req.body.state, req.body.zipcode, req.body.country);
+      res.redirect('/')
+   }
+});
 
 route.get('/rsvp', async function (req, res) {
 
       if (Object.keys(req.query)[0] === 'connectionId') {
          var connectionId = req.query.connectionId;
         conns=userdetails.addConnection(connectionId, req.query.rsvp);
-        //console.log('rsvp invoked');
          req.session.theUser.userdetails = userdetails;
-        //  console.log('ok not ok'+JSON.stringify(req.session.theUser.userdetails));
          res.redirect('/userprofile');
       }
   });

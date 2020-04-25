@@ -111,7 +111,7 @@ module.exports.userSchema = new mongoose.Schema({
     userEmail: String,
     password: {
       salt: {type: String, required: true},
-      hash: {type: String, required: true}
+      passwordHash: {type: String, required: true}
     },
     userAddress1: String,
     userAddress2: String,
