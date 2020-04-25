@@ -65,7 +65,7 @@ db.Connections.insertMany([{
 	location:'Jack London State Historic Park',
 	date:'Tuesday, February 18',
 	time: '5PM',
-	userId : 2
+	userId : 102
   },
   {
 	connectionId: 2,
@@ -76,7 +76,7 @@ db.Connections.insertMany([{
 	location:'Winchester Mystery House',
 	date:'Wednesday, March 11',
 	time: '6PM',
-	userId : 2
+	userId : 102
   },
   {
 	connectionId: 3,
@@ -87,7 +87,7 @@ db.Connections.insertMany([{
 	location:'Golden Gate Bridge',
 	date :'Monday, March 16',
 	time : '11:30AM',
-	userId: 2
+	userId: 102
   },
   {
 	connectionId: 4,
@@ -98,7 +98,7 @@ db.Connections.insertMany([{
 	location:'Miami Beach',
 	date:'Tuesday, April 7',
 	time: '10AM',
-	userId: 3
+	userId: 0
   },
   {
 	connectionId: 5,
@@ -109,7 +109,7 @@ db.Connections.insertMany([{
 	location:'Universal Studio',
 	date:'Wednesday, April 15',
 	time: '5PM',
-	userId: 3
+	userId: 0
   },
   {
 	connectionId: 6,
@@ -120,7 +120,7 @@ db.Connections.insertMany([{
 	location:'Busch Gardens Tampa Bay',
 	date:'Wednesday, April 22',
 	time: '3PM',
-	userId: 3
+	userId: 101
   }
 ]);
 ```
