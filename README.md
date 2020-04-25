@@ -39,18 +39,18 @@ db.Users.insert([{
         userZipCode: "28203",
         userCountry: "USA"
     },
-    {
-        userId: 103,
-        userFirstName: "Kakashi",
-        userLastName: "Hatake",
-        userEmail: "demo3@uncc.edu",
-	password: {salt: "b67de8c581c81f1c", passwordHash: "6503327fb44566a4e3ade27bd58988bc519010ff4b4e0f017651f48a3533a7913ff09a737ef9730d4a54a6c363120b1d10c21c8df41db7c5c7dc5320541bba71"},
-        userAddress1: "University Terrace North",
-        userAddress2: "Apt H",
-        userCity: "Charlotte",
-        userState: "NC",
-        userZipCode: "28203",
-        userCountry: "USA"
+		{
+			userId: 0,
+			userFirstName: "Admin",
+			userLastName: "User",
+			userEmail: "admin@uncc.edu",
+			password: {salt: "efc2f4dbcc28287c", passwordHash: "322ed2b3d07f34d3c16f6e9ea20450bedac9266e444ddc8d87a01ff772838f8747b28d329919b56732f2b288962604e6ce382991ca4ff4f3c422a40c55a9f678"},
+			userAddress1: "University Terrace North",
+			userAddress2: "Apt H",
+			userCity: "Charlotte",
+			userState: "NC",
+			userZipCode: "28203",
+			userCountry: "USA"
 }]);
 ```
 
@@ -127,8 +127,8 @@ db.Connections.insertMany([
 ```
 
 ##### Demo Login Credentials for the application
-Username | Password
----------|---------
-demo1@uncc.edu | qwerty123
-demo2@uncc.edu | qwerty123
-demo3@uncc.edu | qwerty123
+Username | Password | Type
+---------|----------|-----
+admin@uncc.edu | admin12345 | Admin Account
+demo1@uncc.edu | qwerty123 | General User
+demo2@uncc.edu | qwerty123 | General User
