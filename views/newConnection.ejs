@@ -1,34 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wanderer Notes</title>
-    <link rel="stylesheet" href="../../assets/stylesheets/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wanderer Notes</title>
+  <link rel="stylesheet" href="../../assets/stylesheets/styles.css">
 </head>
+
 <body>
-    
-    <%- include('partials/header.ejs') %>
-    <main id="newConnection">
-        <h2 class="center-text">Add a Travel</h2>
-        <form class="form" action="/connections/newConnection" method="POST">
-          <label for="topic"><span>Topic</span>
-          <input type="text" id="topic" placeholder="topic" name="topic"></label>
-          <label for="name"><span>Name</span>
-          <input type="text" id="name" placeholder="name" name="name"></label>
-          <label for="hostedBy"><span class="color-white">Hosted  By</span>
-            <input type="text" id="hostedBy" placeholder="Hosted By" name="hostedBy" required></label>
-          <label for="description"><span>Details</span>
-          <textarea id="description" placeholder="description" name="description"></textarea></label>
-          <label for="where"><span>Where</span>
-          <input type="text" id="where" placeholder="location" name="where"></label>
-          <label for="when"><span>When</span>
-            <input type="date" id="when" name="when" value="" min="2020-05-03" max="2024-12-31"></label>
-          <label><span> </span><input type="submit" value="Add Travel" /> </label>
-        </form>
-      </main>
-  
-      <% include partials/footer.ejs %>
-  
-    </body>
-  </html>
+
+  <%- include('partials/header.ejs') %>
+  <main id="newConnection">
+    <h2 class="center-text">Add a Travel</h2>
+    <div class="color-red paragraph">
+      <% if(customMsg != null){ %>
+      <p><%= customMsg %></p>
+      <% } %>
+      <% if(errorMessages){
+                  for(let i=0; i<errorMessages.length; i++){
+                  %>
+      <%= errorMessages[i].msg %><br>
+      <%
+                }
+                } %>
+    </div>
+    <br>
+    <form class="form" action="/connections/newConnection" method="POST">
+      <label for="topic"><span>Topic</span>
+        <input type="text" id="topic" placeholder="Topic" name="topic" required></label>
+      <label for="name"><span>Name</span>
+        <input type="text" id="name" placeholder="Name" name="name" required></label>
+      <label for="hostedBy"><span class="color-white">Hosted By</span>
+        <input type="text" id="hostedBy" placeholder="Hosted By" name="hostedBy" required></label>
+      <label for="description"><span>Details</span>
+        <textarea id="description" placeholder="Details" name="description" required></textarea></label>
+      <label for="where"><span>Where</span>
+        <input type="text" id="where" placeholder="Location" name="where" required></label>
+      <label for="when"><span>When</span>
+        <input type="date" id="when" name="when" value="" min="2020-05-03" max="2024-12-31" required></label>
+      <label><span> </span><input type="submit" value="Add Travel Event" /> </label>
+    </form>
+  </main>
+
+  <% include partials/footer.ejs %>
+
+</body>
+
+</html>
