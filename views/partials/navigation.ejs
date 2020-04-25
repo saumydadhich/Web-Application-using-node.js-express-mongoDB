@@ -1,0 +1,33 @@
+<div class="connecting">
+  <ul class="user-nav">
+    <li><a href="/"><i class="fas fa-home"></i>&nbsp;Home</a></li>
+    <li><a href="/connections"><i class="far fa-calendar-plus"></i>&nbsp;Connections</a></li>
+    <% if( typeof (user) !== 'undefined'){ %>
+      <li class="right-side font-info"><a href="#">Welcome <%= user.userId %></a></li>
+    <% } else {%>
+
+    <% } %>
+  </ul>
+
+</div>
+
+
+<div class="navigate">
+  <ul class ="login">
+            <% if(session != undefined){%>
+            <li><a style="text-decoration:none" href = "/connections/newConnection">Add an event</a></li>
+            <li><a style="text-decoration:none" href = "/userprofile/logout">Logout</a></li>
+            <li><a style="text-decoration:none" href = "/userprofile">My Events</a></li>
+            <%}else{%>
+                <li><a style="text-decoration:none" href = "/connections/newConnection">Add an event</a></li>
+                <li><a style="text-decoration:none" href = "/login">LogIn</a></li>
+                <li><a style="text-decoration:none" href = "/signup">SignUp</a></li>
+                <% }%>
+                <% if( typeof (session) !== 'undefined'){ %>
+                  <li class="right-side font-info"><a href="#">Welcome <%= session.userFirstName %></a></li>
+                <% } else {%>
+                  <li class="right-side font-info"><a href="#">Not signed in</a></li>
+                <% } %>
+              </
+        </ul>
+    </div>

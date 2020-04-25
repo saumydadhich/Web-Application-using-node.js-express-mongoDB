@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wanderer Notes</title>
+    <link rel="stylesheet" href="../../assets/stylesheets/styles.css">
+</head>
+<body id="signupPage">
+
+        <%- include('partials/header.ejs') %>
+        <main id="signup-page">
+            <h2 class="center-text">Create an Account</h2>
+            <form class="form" action="/userprofile/create"  method="post">
+                <label for="username"><span>Username/Email</span>
+                <input type="email" id="username" name="username" placeholder="username" required></label>
+
+                <label for="password"><span>Password</span>
+                <input type="password" id="password" name="password" placeholder="password" required></label>
+
+                <label for="confirmPassword"><span>Confirm Password</span>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required></label>
+
+                <label for="firstName"><span>First Name</span>
+                <input type="text" id="firstName" name="firstName" placeholder="first name" required></label>
+
+                <label for="lastName"><span>Last Name</span>
+                <input type="text" id="lastName" name="lastName" placeholder="last name" required></label>
+
+                <label for="address1"><span>Address Line 1</span>
+                <input type="text" id="address1" name="address1" placeholder="Address Line 1" required></label>
+
+                <label for="address2"><span>Address Line 2</span>
+                <input type="text" id="address2" name="address2" placeholder="Address Line 2" required></label>
+
+                <label for="city"><span>City</span>
+                <input type="text" id="city" name="city" placeholder="city" required></label>
+
+                <label for="state"><span>State</span>
+                <input type="text" id="state" name="state" placeholder="state" required></label>
+
+                <label for="zipcode"><span>Zipcode</span>
+                <input type="text" id="zipcode" name="zipcode" placeholder="Zipcode" required></label>
+
+                <label for="country"><span>Country</span>
+                <input type="text" id="country" name="country" placeholder="Country" required></label>
+
+                <label><input type="submit" class="formButton" value="Submit"></label>
+            </form>
+          </main>
+
+          <% include partials/footer.ejs %>
+
+        </body>
+      </html>

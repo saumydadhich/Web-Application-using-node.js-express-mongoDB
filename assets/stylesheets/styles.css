@@ -1,0 +1,306 @@
+/*common css across the application begins here*/
+body {
+  background-image: url("/assets/images/background3.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: contain;
+  background-color: #B97D3E;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  background-color: #E0AC69;
+  opacity: 0.9;
+  margin: 10px;
+  padding: 1px;
+}
+
+section {
+    margin: 30px;
+    padding: 2px;
+    background-color: #E0AC69;
+    border-radius: 4px;
+    border: 1px solid black;
+}
+
+section h2 {
+  margin-left: 10px;
+}
+
+header {
+ background-color: #C68642;
+ opacity: 0.8;
+ margin: 10px;
+ padding: 1px;
+}
+
+footer {
+  background-color: #C68642;
+  text-align: center;
+  opacity: 0.8;
+  margin: 10px;
+  padding: 1px;
+}
+
+.contact-details i { font-size: 20px; margin: 0 0 10px 0;}
+#hosting-website {margin-bottom: -10px!important;}
+#logo{
+    width: 125px;
+    float:left;
+    height: 125px;
+    max-width:100%;
+    max-height:100%;
+    margin: 10px;
+    padding: 1px;
+}
+
+.website-name {
+  font-family: 'Alegreya SC', serif;
+  text-align: center;
+}
+
+.isDisabled {
+  cursor: not-allowed!important;
+  opacity: 0.8;
+}
+
+.footer-icons a{
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  background-color: #C68642;
+  border-radius: 2px;
+  font-size: 20px;
+  text-align: center;
+  color: white;
+  display: inline-block;
+}
+
+.font-info {
+  font-style: italic;
+}
+.center-text {text-align: center;}
+
+.footer-ref a{padding-left: 10px;}
+
+.error {
+  margin-block-start: unset;
+  color: red;
+}
+
+/*navigation bar css starts here*/
+ul.user-nav {
+  list-style-type: none;
+  margin: 10px;
+  padding: 1px;
+  overflow: hidden;
+  background-color: #74461E;
+  opacity: 0.95;
+}
+
+ul.user-nav li {float: left;}
+
+ul.user-nav li a {
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: #FFF4E7;
+}
+
+ul.user-nav li a:hover {background-color: #2A190B;}
+
+ul.user-nav li.right-side {float: right;}
+/*navigation bar css ends here*/
+@media screen and (max-width: 600px) {
+  ul.user-nav li.right-side,
+  ul.user-nav li {float: none;}
+  main,header,footer,ul.user-nav {width: 100%;overflow-x:auto; }
+  section {overflow-x: auto;}
+}
+
+.event-info:after, .hosting-website:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.event-info ul, .hosting-website ul {list-style-type: none;}
+
+.event-info ul li, .hosting-website ul li{
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.column {
+  float: left;
+  padding: 10px;
+}
+
+.left-div {width: 70%;}
+
+.right-div {width: 20%;}
+
+.center-div {width: 60%}
+.right-div img{
+  width:275px;
+  height:150px;
+  max-width:100%;
+  max-height:100%;
+  object-fit:cover;
+}
+/*common css across the application ends here*/
+nav li a:hover {
+    background-color: #3C3C3C;
+    display: inline-block;
+    text-decoration: none;
+}
+
+li a {
+    padding: 10px 20px;
+    text-decoration: none;
+    border: 2px;
+    text-align: center;
+    display: inline-block;
+}
+.paragraph {
+  padding-left: 40px;
+	padding-right: 40px;
+}
+/*CSS for index.html starts here*/
+
+/*CSS for index.html ends here*/
+/*CSS for connection.html starts here*/
+@media screen and (max-width: 600px) {
+  .column { float: none; width: 100%, padding: 0px;}
+  .left-div {width: 100%;}
+  .right-div {width: 100%;}
+  .center-div {width: 100%}
+  .right-div img{
+    max-width:80%;
+    max-height:80%;
+  }
+  .column-image img{
+    max-width:80%;
+    max-height:80%;
+  }
+}
+
+.event-details {
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+#hosted-by {
+  margin: -15px 0 0 0;
+  font-style: italic;
+}
+
+#hosted-by span{color: #3E2610;}
+
+.button {
+    background-color: #373737;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 5px 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: #6E7376;
+    color: white;
+}
+/*CSS for connection.html ends here*/
+/*CSS for savedConnections.html starts here*/
+table {
+    border-collapse: collapse;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width:70%;
+    margin-left:15%;
+    margin-right:15%;
+}
+
+td, th {
+    border: 1px #dddddd;
+    text-align: center;
+    border: 1px solid #373737;
+}
+th {
+  background-color: #C68642;
+  font-weight: bold;
+}
+tr:hover {background-color: #FFEBD5;}
+
+th {
+    height: 20px;
+    color: white;
+}
+
+.table-data-div {
+  overflow-x: auto;
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+/*CSS for savedConnections.html ends here*/
+/*CSS for newConnection.html starts here*/
+.form {
+  padding: 0px 30px 0px 125px;
+}
+.form label {
+	display:block;
+	margin-bottom: 15px;
+}
+.form label > span{
+	display: inline-block;
+	float: left;
+	width: 150px;
+}
+.form textarea{
+  overflow: hidden;
+	padding: 0px 0px 0px 0px;
+	width: 275px;
+	resize:none;
+	height:70px;
+}
+.form input[type=text]
+{
+	padding: 0px 0px 0px 0px;
+  width: 275px;
+}
+
+
+.column-image img{
+  float: left;
+  padding-left: 50px;
+  padding-bottom: 15px;
+  width:275px;
+  height:180px;
+  max-width:100%;
+  max-height:100%;
+  object-fit:cover;
+}
+
+.row-image::after {
+  clear: both;
+  display: table;
+  content: "";
+}
+
+.login{
+  display: flex;
+}
+
+.rsvpa{
+  text-align: center;
+}

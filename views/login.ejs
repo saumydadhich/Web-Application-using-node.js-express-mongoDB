@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wanderer Notes</title>
+    <link rel="stylesheet" href="../../assets/stylesheets/styles.css">
+</head>
+<body id="loginPage">
+
+        <%- include('partials/header.ejs') %>
+        <main id="login-page">
+            <h2 class="center-text">Log In</h2>
+            <form class="form" action="/userprofile"  method="post">
+              <label for="userEmaildAddress"><span>Email</span>
+              <input type="email" id="userEmaildAddress" placeholder="email" name="userEmaildAddress"></label>
+              <label for="userPassword"> <span>Password</span>
+              <input type="password" id="userPassword" placeholder="password" name="userPassword"></label>
+              <% if(failure === "email") {
+                for(var i = 0; i < errorMessage.length; i++) { %>
+                  <h6 class="error"><%= errorMessage[i].msg %></h6>
+                <% }
+              } else if(failure === "incorrect") {%>
+                <h6 class="error">Incorrect Email or Password</h6>
+              <% } %>
+              <label><span> </span><input type="submit" value="Log In" /></label>
+            </form>
+          </main>
+
+          <% include partials/footer.ejs %>
+
+        </body>
+      </html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wanderer Notes</title>
+    <link rel="stylesheet" href="../../assets/stylesheets/styles.css">	
+</head>
+<body id="indexPage">
+    <%- include('partials/header.ejs') %>
+    <main id="contact-page">
+        <h2 class="center-text">Contact Us</h2>
+        <form class="form" action="#" method="post">
+          <label for="name"> <span>Your Name</span>
+          <input type="text" id="name" placeholder="name" name="name"></label>
+          <label for="email"><span>Email</span>
+          <input type="email" id="email" placeholder="email" name="email"></label>
+          <label for="message"><span>Message</span>
+          <textarea id="message" placeholder="message" name="message"></textarea> </label>
+          <label><span> </span><input type="submit" value="Send" /> </label>
+        </form>
+        <div class="center-text contact-details">
+          <i class="fas fa-envelope">&nbsp;details@wanderernotes.com</i><br>
+          <i class="fas fa-phone">&nbsp; (704)4216710</i>
+        </div>
+      </main>
+  
+      <% include partials/footer.ejs %>
+  
+    </body>
+  </html>

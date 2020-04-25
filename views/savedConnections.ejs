@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wanderer Notes</title>
+    <link rel="stylesheet" href="../../assets/stylesheets/styles.css">
+</head>
+<body>
+	<%- include('partials/header.ejs') %>
+    <main>
+		<% if(data.length == 0) { %>
+			<p>There are no connections.</p>
+			<% } else
+				{ %>
+	
+	<table >
+		<tr>
+			<th>Connection</th>
+			<th>Category</th>
+			<th>RSVP</th>
+			<th>Update/Delete</th>
+		</tr>
+		<%for(i = 0;i< data.length;i++){ %>
+		<tr>
+			<td><%=data[i].connection.connectionName%></td>
+			<td><%=data[i].connection.connectionTopic%></td>
+			<td><%=data[i].rsvp%></td>
+			
+			<td >
+				
+				<form action="/connections/update" method="post">
+					<% if(session.userId !== data[i].connection.userId) { %>
+                    <input type="hidden" name="connectionId" value="<%= data[i].connection.connectionId %>" />
+                    <a  class="buttonUpdate" style ="color:rgb(0, 255, 221); cursor: pointer;" href="/connections/connection?id=<%= data[i].connection.connectionId %>">Update</a>
+                    <button type="submit" class="buttonDelete" name="action" value="delete">&nbsp;Delete</button>
+				  </form>
+				  <%}%>
+				<!-- <a class="buttonUpdate" style ="color:rgb(0, 255, 221); cursor: pointer;" href = "/connections/connection?id=<%= data[i].connection.connectionId %>">Update</a>
+				<a href="/controller/delete?id=<%= data[i].connection.connectionId %>" class="buttonDelete" style =" cursor: pointer;">Delete</a> -->
+			
+			</td>
+		</tr>
+		<%}%>
+	</table>
+	<% } %>
+     
+    </main>
+    
+    <%- include('partials/footer.ejs') %>
+   
+</body>
+</html>
