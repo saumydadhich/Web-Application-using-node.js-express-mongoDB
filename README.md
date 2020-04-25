@@ -13,7 +13,7 @@ db.createCollection('UserConnections');
 ##### Insert data into Users Collection
 ```
 db.Users.insert([{
-	userId: 1,
+	userId: 101,
         userFirstName: "Scott",
         userLastName: "Pilgrim",
         userEmail: "demo1@uncc.edu",
@@ -27,7 +27,7 @@ db.Users.insert([{
     },
 
     {
-        userId: 2,
+        userId: 102,
         userFirstName: "Bilbo",
         userLastName: "Baggins",
         userEmail: "demo2@uncc.edu",
@@ -40,7 +40,7 @@ db.Users.insert([{
         userCountry: "USA"
     },
     {
-        userId: 3,
+        userId: 103,
         userFirstName: "Kakashi",
         userLastName: "Hatake",
         userEmail: "demo3@uncc.edu",
