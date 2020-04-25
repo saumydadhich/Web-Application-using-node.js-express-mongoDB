@@ -10,20 +10,25 @@
 <body id="connectionPage">
 
     <%- include('partials/header.ejs') %>
-    
+
 	<aside class="rsvpa">
 	    <div class="buttony">
-            
+
             <% if(session === undefined){ %>
             <p>Are you going?</p>
-            <form action ="/login">            
-            <button style="cursor:pointer; color:blue"  onclick="window.location.href = '/login'">Yes</button>
-            <button style="cursor:pointer; color:orange"  onclick="window.location.href = '/login'">No</button>
-            <button style="cursor:pointer; color:green"  onclick="window.location.href = '/login'">Maybe</button>
+            <form action ="/login">
+              <button style="cursor:pointer; color:blue"  onclick="window.location.href = '/login'">Yes</button>
+              <button style="cursor:pointer; color:orange"  onclick="window.location.href = '/login'">No</button>
+              <button style="cursor:pointer; color:green"  onclick="window.location.href = '/login'">Maybe</button>
             </form>
             <% } %>
             <% if(session != undefined){ %>
-                <% if(session.userId !== data.userId) { %>
+                <% if(session.userId === 0) { %>
+                  <form action="/connections/update" method="post">
+                      <input type="hidden" name="connectionId" value="<%= data.connectionId %>"/>
+                      <button type="submit" style="cursor:pointer; color:blue" name="action" value="adminDelete">&nbsp;Delete Connection</button>
+                  </form>
+                <%} else if(session.userId !== data.userId) { %>
                     <p>Are you going?</p>
                 <form action="/connections/update" method="post">
                     <input type="hidden" name="connectionId" value="<%= data.connectionId %>"/>
@@ -38,7 +43,7 @@
                 <% } %>
 		</div>
     </aside>
-    
+
     <main>
 	    <section>
             <h2 class="center-text"><%= data.connectionName %></h2>
@@ -47,18 +52,18 @@
           <h4 id="hosted-by" class="event-details">Hosted by: <%= data.hostedBy %></h4>
           <p class="event-details"><%= data.date%><br>
         <%= data.time%><br><%= data.location%></p>
-         
-            
+
+
                 <p class="event-details">
                     <strong>Travel Event Details</strong><br>
                     <%= data.connectionDetails %>
                  </p>
-            
-        </section>	   
+
+        </section>
     </main>
-    
+
     <%- include('partials/footer.ejs') %>
-    
-   
+
+
 </body>
 </html>

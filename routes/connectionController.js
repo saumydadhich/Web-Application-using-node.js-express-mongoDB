@@ -30,7 +30,7 @@ route.get('/', async function(req,res){
     //res.render('connections.ejs',{data: connections[0],categories:connections[1] ,session: req.session.theUser});
 })
 
-route.get('/connection', async function(req,res){  
+route.get('/connection', async function(req,res){
     if (await connectionDB.doesConnectionExist(req.query.id, ConnectionModel)) {
         var connection = await connectionDB.getConnection(req.query.id, ConnectionModel);
         res.render('connection.ejs',{data: connection, session: req.session.theUser});
@@ -161,6 +161,9 @@ route.post('/update', urlEncodedParser, jsonParser, async function(req,res){
           await userConnectionDB.removeUserConnection(currentUser.userId, req.body.connectionId, UserConnectionModel);
           req.session.userProfile = await userConnectionDB.getUserProfile(currentUser.userId, UserConnectionModel, ConnectionModel);
           res.redirect('/userprofile');
+        } else if(req.body.action === 'adminDelete'){
+          await connectionDB.removeAdminConnection(req.body.connectionId, UserConnectionModel, ConnectionModel);
+          res.redirect('/connections');
         }
     }
 });

@@ -30,17 +30,32 @@ module.exports.doesUserConnectionExist = function(userId, connectionId, userConn
 
 module.exports.getUserProfile = function(userId, userConnections, connections) {
   return new Promise((resolve, reject) => {
-    userConnections.find({userId:userId}).then(async data => {
-      let itemList = [];
-      const connectionsData = require('./connectionsData.js');
-      const UserConnection = require('../models/userConnection.js');
-      for (let i = 0; i < data.length; i++) {
-        let connection = await connectionsData.getConnection(data[i].connectionId, connections);
-        let userConnection = new UserConnection(connection, data[i].rsvp);
-        itemList.push(userConnection);
+      if(userId === 0){
+          userConnections.find().then(async data => {
+            let itemList = [];
+            const connectionsData = require('./connectionsData.js');
+            const UserConnection = require('../models/userConnection.js');
+            for (let i = 0; i < data.length; i++) {
+              let connection = await connectionsData.getConnection(data[i].connectionId, connections);
+              let userConnection = new UserConnection(connection, data[i].rsvp);
+              itemList.push(userConnection);
+            }
+            resolve(itemList);
+          }).catch(err => {return reject(err); })
       }
-      resolve(itemList);
-    }).catch(err => { return reject(err); })
+      else{
+          userConnections.find({userId:userId}).then(async data => {
+            let itemList = [];
+            const connectionsData = require('./connectionsData.js');
+            const UserConnection = require('../models/userConnection.js');
+            for (let i = 0; i < data.length; i++) {
+              let connection = await connectionsData.getConnection(data[i].connectionId, connections);
+              let userConnection = new UserConnection(connection, data[i].rsvp);
+              itemList.push(userConnection);
+            }
+            resolve(itemList);
+        }).catch(err => { return reject(err); })
+      }
   })
 }
 
@@ -57,9 +72,18 @@ module.exports.addConnection = function(connection, connectionModel) {
 
 //function to delete a event from user profile
 module.exports.removeUserConnection = function(userId, connectionId, userConnectionModel) {
-  return new Promise((resolve, reject) => {
-    userConnectionModel.deleteOne({ $and: [{userId:userId}, {connectionId:connectionId}] },function (err, data) {
-      resolve();
-    }).catch(err => { return reject(err); });
-  });
+  if(userId === 0){
+    return new Promise((resolve, reject) => {
+      userConnectionModel.deleteMany({connectionId:connectionId}, function (err, data) {
+        resolve();
+      }).catch(err => { return reject(err); });
+    });
+  }
+  else{
+    return new Promise((resolve, reject) => {
+      userConnectionModel.deleteOne({ $and: [{userId:userId}, {connectionId:connectionId}] },function (err, data) {
+        resolve();
+      }).catch(err => { return reject(err); });
+    });
+  }
 };

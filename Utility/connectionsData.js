@@ -71,7 +71,7 @@ const conObj = require('../models/connection');
 //     date :'Wednesday, April 22',
 //     time : '3PM'
 //  }
- 
+
 // ]
 
 
@@ -88,7 +88,7 @@ const conObj = require('../models/connection');
 //             }
 //     }
 //     return ([conlist,catlist]);
-    
+
 // };
 
 // //console.log('The datalist should of the objects');
@@ -110,7 +110,7 @@ const conObj = require('../models/connection');
 // module.exports = {
 //     getConnections: getConnections,
 //     getConnection: getConnection,
-    
+
 // }
 
 
@@ -127,7 +127,7 @@ var getConnectionTypes = function(connections) {
       }).catch(err => { return reject(err); })
     })
   }
-  
+
   /**
    * function to return all festivals
    * @return {list}        returns list of connections/festivals
@@ -136,7 +136,7 @@ var getConnectionTypes = function(connections) {
     return new Promise((resolve, reject) => {
         connections.find({}).then(data => {
           let connectionsModel = [];
-          
+
           for (let i = 0; i < data.length; i++) {
             connectionsModel.push(new conObj(data[i].connectionId, data[i].connectionTopic, data[i].connectionName, data[i].hostedBy, data[i].connectionDetails,
             data[i].location, data[i].date, data[i].time, data.userId));
@@ -145,7 +145,7 @@ var getConnectionTypes = function(connections) {
         }).catch(err => { return reject(err); })
     })
   };
-  
+
   /**
    * function to return a festival based on festId
    * @param  {integer} festId connection unique Id
@@ -153,7 +153,7 @@ var getConnectionTypes = function(connections) {
    */
   var getConnection = function(connectionId, connections) {
     //let FestivalModel=require('../models/festival');
-    
+
     return new Promise((resolve, reject) => {
         connections.findOne({connectionId:connectionId}).then(data => {
           console.log(data);
@@ -163,10 +163,10 @@ var getConnectionTypes = function(connections) {
         }).catch(err => { return reject(err); })
     })
   };
-  
-  
+
+
   var getUserCreatedConnections = function(userId, connections) {
-    
+
   return new Promise((resolve, reject) => {
       connections.find({userId:userId}).then(data => {
         let connectionsModel = [];
@@ -178,7 +178,7 @@ var getConnectionTypes = function(connections) {
       }).catch(err => { return reject(err); })
   })
   };
-  
+
   /**
    * function to check whether a festival exists in the database
    * @param  {integer} festId connection unique Id
@@ -192,12 +192,24 @@ var getConnectionTypes = function(connections) {
     })
   };
 
+  removeAdminConnection = async function(connectionID, UserConnectionModel, ConnectionModel){
+    var path = require('path');
+    var userConnectionDB = require( path.resolve( __dirname, "./userProfileDB.js" ) );
+    await userConnectionDB.removeUserConnection(0, connectionID, UserConnectionModel);
+    return new Promise((resolve, reject) => {
+      ConnectionModel.deleteOne({connectionId:connectionID},function (err, data) {
+        resolve();
+      }).catch(err => { return reject(err); });
+    });
+  }
+
   module.exports = {
     // userData: userData,
     doesConnectionExist: doesConnectionExist,
     getUserCreatedConnections: getUserCreatedConnections,
     getConnection:getConnection,
     getConnections:getConnections,
-    getConnectionTypes:getConnectionTypes
+    getConnectionTypes:getConnectionTypes,
+    removeAdminConnection: removeAdminConnection
 
 };

@@ -61,9 +61,9 @@ route.post('/', urlEncodedParser, check('userEmaildAddress').isEmail(), async fu
   else{
     //get users from database
     var users = await userdb.getUsers(UserModel);
-    var loggedInUser;
+  //  var loggedInUser;
     if (await userdb.validateLoginDetails(req.body.userEmaildAddress, req.body.userPassword, UserModel)) {
-      loggedInUser = await userdb.getUser(req.body.userEmaildAddress, UserModel);
+    //  loggedInUser = await userdb.getUser(req.body.userEmaildAddress, UserModel);
       req.session.theUser = await userdb.getUser(req.body.userEmaildAddress, UserModel);
       req.session.userProfile = await userConnectionDB.getUserProfile(req.session.theUser.userId, UserConnectionModel, ConnectionModel);
       res.render('savedConnections', { data: req.session.userProfile,session:req.session.theUser });
