@@ -17,6 +17,10 @@ main {
   padding: 1px;
 }
 
+.color-red {
+  color: red;
+}
+
 section {
     margin: 30px;
     padding: 2px;
@@ -84,12 +88,6 @@ footer {
 .center-text {text-align: center;}
 
 .footer-ref a{padding-left: 10px;}
-
-.error {
-  margin-block-start: unset;
-  color: red;
-}
-
 /*navigation bar css starts here*/
 ul.user-nav {
   list-style-type: none;
